@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diet Tips - Healthy Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.4/css/all.min.css" integrity="sha512-mQ1yN8brandxIMDmv4Tj8Sfpup+2Tphk90qZqK/2ZsAmuX1N+3b6PBmT0+D8GwQFfbYvK+msQR0N7uJqJf2sag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Global Styles */
+    :root {
+      --bg: #f4f9f3;
+      --surface: #ffffff;
+      --surface-alt: #eff8ef;
+      --primary: #2f8f4e;
+      --primary-soft: #7ed486;
+      --text: #203f2e;
+      --muted: #6b7a6d;
+      --shadow: 0 18px 50px rgba(45, 115, 70, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(47, 143, 78, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(126, 212, 134, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 20%, rgba(144, 238, 144, 0.06) 0%, transparent 40%),
+        linear-gradient(135deg, #fafffe 0%, #f0f8f5 50%, #e8f5f0 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: transparent;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(26, 70, 40, 0.08);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .site-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.3rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(47, 143, 78, 0.18);
+      background: #208040;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 2.4vw, 2.8rem);
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 2rem;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(47, 143, 78, 0.16);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin-top: 3rem;
+    }
+
+    footer {
+      background: rgba(47, 143, 78, 0.05);
+      border-top: 1px solid rgba(47, 143, 78, 0.1);
+      padding: 3rem 0 2rem;
+      margin-top: 5rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer p {
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: grid;
+      align-items: center;
+      padding: 4rem 0;
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.92) 100%),
+        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 3.5vw, 4rem);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .tip-list {
+      list-style: none;
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .tip-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .tip-list li::before {
+      content: '\f058';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-bar">
+        <div class="site-brand">
+          <i class="fas fa-leaf"></i> Healthy Living
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="diet.html" class="active">Diet Tips</a></li>
+            <li><a href="#" class="btn">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Importance of Variety in Your Diet</h1>
+          <p>Discover the transformative power of eating a diverse range of nutritious foods. Learn how variety can boost your health, prevent disease, and help you live a longer, more vibrant life.</p>
+          <button class="btn">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Five Key Benefits of Diet Variety</h2>
+          <p>Why mixing up your foods matters for your health</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3><i class="fas fa-apple-alt"></i> Meet Nutrient Needs</h3>
+            <p>Different foods provide different nutrients. Oranges are rich in Vitamin C while almonds provide Vitamin E. By eating a variety of whole foods, you ensure your body gets all the essential nutrients it needs without supplements.</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fas fa-smile"></i> Prevent Boredom</h3>
+            <p>Healthy eating doesn't have to be monotonous. Experiment with different cuisines, cooking methods, and seasonings. Try Indian, Mexican, Thai, or Ethiopian dishes to keep your meals exciting and enjoyable.</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fas fa-heart"></i> Nourish Your Gut</h3>
+            <p>A diverse diet contributes to a diverse microbiome. Eating different foods and incorporating lots of plants feeds healthy bacteria in your gut, which is vital for overall health and disease prevention.</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fas fa-birthday-cake"></i> Live Longer</h3>
+            <p>Studies show that people who regularly eat 16-17 healthy foods were 42% less likely to die from any cause than those eating only 0-8 healthy foods. Each additional healthy food adds 5% lower mortality risk.</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fas fa-heartbeat"></i> Reduce Disease Risk</h3>
+            <p>Eating foods from all groups—fruits, vegetables, dairy, meats, and grains—was associated with a 30% lower risk of type 2 diabetes. Diet diversity is key for both prevention and managing chronic diseases.</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fas fa-seedling"></i> Seasonal Eating</h3>
+            <p>Enjoy apples in fall, citrus in winter, and tomatoes in summer. Eating seasonally ensures you're getting peak nutrition and supports local, sustainable farming practices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: rgba(47, 143, 78, 0.04); border-radius: 24px; padding: 4rem 2rem;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ways to Increase Diet Variety</h2>
+        </div>
+
+        <ul class="tip-list">
+          <li><strong>Shop at farmers markets</strong> to discover new, seasonal foods in your area</li>
+          <li><strong>Try different cuisines</strong> - Indian, Thai, Greek, Italian, French, and more</li>
+          <li><strong>Experiment with cooking methods</strong> - roasting, steaming, grilling, slow cooking, or Instant Pot</li>
+          <li><strong>Rotate protein options</strong> - include fish, beans, tofu, and meats throughout the month</li>
+          <li><strong>Add vegetables to familiar dishes</strong> - enhance tacos, pasta, and soups with extra plants</li>
+          <li><strong>Try one new food each week</strong> - make exploration a regular habit</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Healthy Living. Inspired by the importance of variety in nutrition.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Eat well. Live well. Thrive.</p>
+    </div>
+  </footer>
+</body>
+</html>
